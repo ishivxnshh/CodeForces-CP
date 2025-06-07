@@ -20,26 +20,36 @@ using namespace __gnu_pbds;
 #define no cout << "NO\n"
 void solve()
 {
-    ll n;
+    int n;
     cin >> n;
-    ll res = 0;
-    ll count = 0;
-    f(i, n)
+    vector<vector<int>> arr(n, vector<int>(n));
+    for (int i = 0; i < n; i++)
     {
-        int a;
-        cin >> a;
-        if(a == 1)
+        for (int j = 0; j < n; j++)
         {
-            res = max(res, count);
-            count = 0;
-        }
-        else
-        {
-            count++;
+            cin >> arr[i][j];
         }
     }
-    res = max(res, count);
-    cout << res << nline;
+    unordered_set<int> s;
+    for (int i = 0; i < n; i++)
+    {
+        s.insert(arr[0][i]);
+    }
+    for (int i = 0; i < n; i++)
+    {
+        s.insert(arr[n - 1][i]);
+    }
+    vector<int> vec(s.begin(), s.end());
+    reverse(vec.begin(), vec.end());
+    int sum = accumulate(vec.begin(), vec.end(), 0);
+    cout << (2 * n * (2 * n + 1)) / 2 - sum << " ";
+    f(i, n-1){
+      cout << arr[0][i] << " ";
+    }
+    f(i, n){
+      cout << arr[n-1][i] << " ";
+    }
+    cout << nline;
 }
 
 int main()

@@ -20,26 +20,16 @@ using namespace __gnu_pbds;
 #define no cout << "NO\n"
 void solve()
 {
-    ll n;
-    cin >> n;
-    ll res = 0;
-    ll count = 0;
-    f(i, n)
+    ll k;
+    cin >> k;
+    if(k % 2 == 1)
     {
-        int a;
-        cin >> a;
-        if(a == 1)
-        {
-            res = max(res, count);
-            count = 0;
-        }
-        else
-        {
-            count++;
-        }
+        yes;
     }
-    res = max(res, count);
-    cout << res << nline;
+    else
+    {
+        no;
+    }
 }
 
 int main()
